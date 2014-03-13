@@ -1,0 +1,57 @@
+<serviceGroup>
+
+    <!--
+        Engage Admin module to all Admin Services
+      -->
+    <module ref="ServerAdminModule"/>
+
+    <!-- Disabling MTOM for admin services. If MTOM is enabled globally
+        this will case an adverse effect on these services when calling
+        through the AJAX admin console.
+    -->
+    <parameter name="enableMTOM">false</parameter>
+
+    <service name="OCAgentServer" scope="application">
+
+        <transports>
+            <transport>https</transport>
+        </transports>
+
+        <description>
+            OCAgentServer
+        </description>
+
+
+        <parameter name="ServiceClass"  locked="false">
+            org.wso2.oc.receiver.OCAgentServer
+        </parameter>
+
+        <schema schemaNamespace="http://org.apache.axis2/xsd" elementFormDefaultQualified="true"/>
+
+        <operation name="forcefulRestart">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/</parameter>
+        </operation>
+        <operation name="gracefulRestart">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/</parameter>
+        </operation>
+        <operation name="forcefulShutdown">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/</parameter>
+        </operation>
+        <operation name="gracefulShutdown">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/</parameter>
+        </operation>
+
+        <!--messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+        </messageReceivers-->
+        <!--parameter name="adminService" locked="ture">true</parameter-->
+
+
+
+        <parameter name="adminService" locked="false">true</parameter>
+        <parameter name="hiddenService" locked="false">true</parameter>
+
+    </service>
+
+</serviceGroup>
