@@ -27,21 +27,25 @@ public class StatPublisher extends TimerTask {
 
             System.out.println("===========running...");
             try {
-                System.out.println("=====================+:" + serverAdmin.getServerData().getCarbonVersion());
-                System.out.println("=====================+:" + serverAdmin.getServerData().getServerUpTime().getSeconds());
-                System.out.println("=====================+:" + serverAdmin.getServerData().getServerIp());
-                System.out.println("=====================+:" + serverAdmin.getServerData().getServerName());
-                System.out.println("=====================+:" + serverAdmin.getServerData().getRepoLocation());
+                System.out.println("=====================Carbon Version:" + serverAdmin.getServerData().getCarbonVersion());
+                System.out.println("=====================Up time : "
+                        + " Days:" + serverAdmin.getServerData().getServerUpTime().getDays()
+                        + ", Hours" + serverAdmin.getServerData().getServerUpTime().getHours()
+                        + ", Minutes" + serverAdmin.getServerData().getServerUpTime().getMinutes()
+                        + ", Seconds" + serverAdmin.getServerData().getServerUpTime().getSeconds());
+                System.out.println("=====================Server IP:" + serverAdmin.getServerData().getServerIp());
+                System.out.println("=====================Server Name:" + serverAdmin.getServerData().getServerName());
+                System.out.println("=====================Repo Location:" + serverAdmin.getServerData().getRepoLocation());
 
 
                 Runtime runtime = Runtime.getRuntime();
-                System.out.println("\"=====================Mem==freemem=" + runtime.freeMemory()
+                System.out.println("=====================Mem==FreeMemory=" + runtime.freeMemory()
                         + ", totalmem=" + runtime.totalMemory()
                         + ", maxmem=" + runtime.maxMemory()
                         + ", available proceses=" + runtime.availableProcessors());
 
                 OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
-                System.out.println("=====================OS==name=" + operatingSystemMXBean.getName()
+                System.out.println("=====================OS==Name=" + operatingSystemMXBean.getName()
                         + ", arch=" + operatingSystemMXBean.getArch()
                         + ", aval pro=" + operatingSystemMXBean.getAvailableProcessors()
                         + ", load average=" + operatingSystemMXBean.getSystemLoadAverage()
@@ -59,7 +63,7 @@ public class StatPublisher extends TimerTask {
                     cpuTime += threadMXBean.getThreadCpuTime(i);
                 }
 
-                System.out.print(" All:" + cpuTime);
+                System.out.println(" All:" + cpuTime);
 
 
             } catch (Exception e) {

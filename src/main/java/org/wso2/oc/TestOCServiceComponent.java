@@ -42,6 +42,7 @@ public class TestOCServiceComponent {
     protected void deactivate(ComponentContext ctxt) {
         System.out.println("TestOCServiceComponent is Deactivated");
         timer.cancel();
+        timer = null;
     }
 
     protected void setAdminService(IServerAdmin serverAdmin) {
