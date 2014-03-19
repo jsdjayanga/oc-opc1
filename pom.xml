@@ -25,6 +25,11 @@
             <artifactId>org.wso2.carbon.server.admin</artifactId>
             <version>4.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.5</version>
+        </dependency>
 
         <!--dependency>
             <groupId>org.apache.cxf</groupId>
@@ -76,7 +81,12 @@
                             org.osgi.service.component.*,
                             org.wso2.carbon.server.admin.common.*,
                             org.apache.axiom.om.*,
-                            org.wso2.carbon.core.*
+                            org.wso2.carbon.core.*,
+                            org.apache.http.*,
+                            org.apache.http.client.methods.*,
+                            org.apache.http.conn.*,
+                            org.apache.http.impl.client.*,
+                            org.wso2.carbon.server.admin.service.*
                         </Import-Package>
                     </instructions>
                 </configuration>
